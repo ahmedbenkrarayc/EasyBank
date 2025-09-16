@@ -42,7 +42,7 @@ public class CompteCourant extends Compte{
 
 	@Override
 	public String afficherDetails() {
-		return null;
+		return "---->Account Details\n-Code : "+this.code+"\n-Solde : "+this.solde+"DH\n-Decouvert : "+this.decouvert+"\n";
 	}
 	
 	
