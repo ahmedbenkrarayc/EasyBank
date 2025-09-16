@@ -5,7 +5,7 @@ public class CompteCourant extends Compte{
 	
 	public CompteCourant(String code, float solde, float decouvert) {
 		super(code, solde);
-		this.setSolde(decouvert);
+		this.setDecouvert(decouvert);
 	}
 	
 	//accessors
@@ -21,11 +21,6 @@ public class CompteCourant extends Compte{
 	@Override
 	public Boolean retirer(float montant) {
 		float result = this.solde - montant;
-		
-		if(result >= 0) {
-			this.solde = result;
-			return true;
-		}
 		
 		if(-this.decouvert <= result) {		
 			this.solde = result;
