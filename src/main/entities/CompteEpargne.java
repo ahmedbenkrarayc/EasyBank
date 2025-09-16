@@ -3,7 +3,7 @@ package main.entities;
 public class CompteEpargne extends Compte {
 	private float tauxInteret;
 	
-	public CompteEpargne(String code, float solde, float decouvert) {
+	public CompteEpargne(String code, float solde, float tauxInteret) {
 		super(code, solde);
 		this.setTauxInteret(tauxInteret);
 	}
