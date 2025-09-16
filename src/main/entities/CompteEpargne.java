@@ -28,7 +28,7 @@ public class CompteEpargne extends Compte {
 
 	@Override
 	public float calculerInteret() {
-		return 0;
+		return this.solde * (this.tauxInteret/100);
 	}
 
 	@Override
