@@ -25,4 +25,9 @@ public abstract class Compte {
     public void setSolde(float solde) {
         this.solde = solde;
     }
+    
+    //methods
+    public abstract Boolean retirer(float montant);
+    public abstract float calculerInteret();
+    public abstract String afficherDetails();
 }
