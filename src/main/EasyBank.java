@@ -6,5 +6,6 @@ public class EasyBank {
 	public static void main(String[] args) {
 		//CompteCourantTest.all();
 		//CompteEpargneTest.all();
+		//VersementTest.all();
 	}
 }

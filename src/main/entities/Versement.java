@@ -18,4 +18,11 @@ public class Versement extends Operation{
 	public void setSource(String source) {
 		this.source = source;
 	}
+
+	@Override
+	public String toString() {
+		return "Versement [source=" + source + ", numero=" + numero + ", date=" + date + ", montant=" + montant + "]";
+	}
+	
+	
 }
