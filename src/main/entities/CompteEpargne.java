@@ -33,6 +33,6 @@ public class CompteEpargne extends Compte {
 
 	@Override
 	public String afficherDetails() {
-		return null;
+		return "---->Account Details\n-Code : "+this.code+"\n-Solde : "+this.solde+"DH\n-tauxInteret : "+this.tauxInteret+"\n";
 	}
 }
