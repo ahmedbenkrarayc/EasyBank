@@ -19,7 +19,11 @@ public class CompteEpargne extends Compte {
 
 	@Override
 	public Boolean retirer(float montant) {
-		return null;
+		if(this.solde >= montant) {
+			this.solde -= montant;
+			return true;
+		}
+		return false;
 	}
 
 	@Override
