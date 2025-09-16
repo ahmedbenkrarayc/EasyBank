@@ -9,4 +9,12 @@ public class Retrait extends Operation{
 		super(date, montant);
 		this.destination = destination;
 	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}	
 }
