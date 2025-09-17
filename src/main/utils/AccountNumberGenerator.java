@@ -6,7 +6,7 @@ import main.entities.Compte;
 
 public class AccountNumberGenerator {
 	public static String generate(List<Compte> compte) {
-		String latest = compte.size() > 0 ? compte.get(compte.size() - 1).getCode() : null;
+		String latest = compte != null && compte.size() > 0 ? compte.get(compte.size() - 1).getCode() : null;
 		if(latest == null) {
 			return "GPT-00000";
 		}
