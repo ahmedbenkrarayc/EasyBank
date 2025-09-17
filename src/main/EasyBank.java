@@ -8,5 +8,6 @@ public class EasyBank {
 		//CompteEpargneTest.all();
 		//VersementTest.all();
 		//AccountNumberGeneratorTest.all();
+		DateUtilsTest.all();
 	}
 }
