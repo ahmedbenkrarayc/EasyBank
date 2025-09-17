@@ -1,9 +1,11 @@
 package main.tests;
 
+import java.util.HashSet;
+
 import main.entities.CompteEpargne;
 
 public class CompteEpargneTest {
-	private static CompteEpargne compte = new CompteEpargne("CodeTest", 1000, 4);
+	private static CompteEpargne compte = new CompteEpargne("CodeTest", 1000, new HashSet<>(), 4);
 	
 	public static void all() {
 		System.out.println(compte.calculerInteret() == 40 ? "calculerInteret() Test passed" : "calculerInteret() Test failed");

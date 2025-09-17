@@ -1,10 +1,12 @@
 package main.entities;
 
+import java.util.Set;
+
 public class CompteEpargne extends Compte {
 	private float tauxInteret;
 	
-	public CompteEpargne(String code, float solde, float tauxInteret) {
-		super(code, solde);
+	public CompteEpargne(String code, float solde, Set<Operation> operations, float tauxInteret) {
+		super(code, solde, operations);
 		this.setTauxInteret(tauxInteret);
 	}
 	

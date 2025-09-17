@@ -1,10 +1,12 @@
 package main.entities;
 
+import java.util.Set;
+
 public class CompteCourant extends Compte{
 	private float decouvert;
 	
-	public CompteCourant(String code, float solde, float decouvert) {
-		super(code, solde);
+	public CompteCourant(String code, float solde, Set<Operation> operations, float decouvert) {
+		super(code, solde, operations);
 		this.setDecouvert(decouvert);
 	}
 	
