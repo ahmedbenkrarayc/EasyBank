@@ -7,6 +7,6 @@ public class EasyBank {
 		//CompteCourantTest.all();
 		//CompteEpargneTest.all();
 		//VersementTest.all();
-		AccountNumberGeneratorTest.all();
+		//AccountNumberGeneratorTest.all();
 	}
 }
