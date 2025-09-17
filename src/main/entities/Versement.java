@@ -2,6 +2,8 @@ package main.entities;
 
 import java.time.LocalDate;
 
+import main.utils.ValidationUtils;
+
 public class Versement extends Operation{
 
 	private String source;
@@ -16,7 +18,8 @@ public class Versement extends Operation{
 	}
 	
 	public void setSource(String source) {
-		this.source = source;
+		if(ValidationUtils.requiredString(source, 3, "Source"))
+			this.source = source;
 	}
 
 	@Override

@@ -2,6 +2,8 @@ package main.entities;
 
 import java.util.Set;
 
+import main.utils.ValidationUtils;
+
 public class CompteEpargne extends Compte {
 	private float tauxInteret;
 	
@@ -15,8 +17,9 @@ public class CompteEpargne extends Compte {
 		return this.tauxInteret;
 	}
 	
-	public void setTauxInteret(float decouvert) {
-		this.tauxInteret = decouvert;
+	public void setTauxInteret(float tauxInteret) {
+		if(ValidationUtils.isPositiveNumber(tauxInteret, "Interest rate"))
+			this.tauxInteret = tauxInteret;
 	}
 
 	@Override

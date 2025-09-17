@@ -2,6 +2,8 @@ package main.entities;
 
 import java.util.Set;
 
+import main.utils.ValidationUtils;
+
 public abstract class Compte {
 	protected String code;
     protected float solde;
@@ -19,7 +21,8 @@ public abstract class Compte {
     }
 
     public void setCode(String code) {
-        this.code = code;
+    	if(ValidationUtils.isAccountCodeValid(code))
+    		this.code = code;
     }
 
     public float getSolde() {
@@ -27,7 +30,8 @@ public abstract class Compte {
     }
 
     public void setSolde(float solde) {
-        this.solde = solde;
+    	if(ValidationUtils.isPositiveNumber(solde, "Solde"))
+    		this.solde = solde;
     }
     
     public Set<Operation> getOperations() {

@@ -2,6 +2,8 @@ package main.entities;
 
 import java.util.Set;
 
+import main.utils.ValidationUtils;
+
 public class CompteCourant extends Compte{
 	private float decouvert;
 	
@@ -16,7 +18,8 @@ public class CompteCourant extends Compte{
 	}
 	
 	public void setDecouvert(float decouvert) {
-		this.decouvert = decouvert;
+		if(ValidationUtils.isPositiveNumber(decouvert, "Decouvert"))
+			this.decouvert = decouvert;
 	}
 	
 	//methods
