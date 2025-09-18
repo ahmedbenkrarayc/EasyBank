@@ -2,10 +2,12 @@ package main.services;
 
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import main.entities.Compte;
 import main.entities.CompteCourant;
 import main.entities.CompteEpargne;
+import main.entities.Operation;
 import main.repositories.AccountRepository;
 import main.utils.AccountNumberGenerator;
 import main.utils.Globals;
@@ -36,12 +38,13 @@ public class AccountService {
 		
 	}
 	
-	public String getSolde(String code) {
-		Optional<Compte> compte = accountRepo.findAccountByCode(code);
-		if(compte.isPresent()) {
-			return String.valueOf(compte.get().getSolde());
-		}
-		
-		return null;
+	public Optional<String> getSolde(String code) {
+		return accountRepo.findAccountByCode(code)
+						  .map(compte -> String.valueOf(compte.getSolde()));
+	}
+	
+	public Optional<Set<Operation>> accountOperationHistory(String code){
+		return accountRepo.findAccountByCode(code)
+				          .map(compte -> compte.getOperations());
 	}
 }
