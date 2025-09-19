@@ -8,8 +8,8 @@ public class EasyBank {
 	
 	public static void main(String[] args) {
 		int choix = 0;
-		
 		Scanner scan = new Scanner(System.in);
+		FeaturesHelper.cls();
 		do {
 			System.out.println("------------------------------------------- EasyBank -------------------------------------------\n\n");
 			System.out.println("1- Créer un compte (courant ou épargne)");
@@ -47,6 +47,8 @@ public class EasyBank {
 					System.out.println("Please pick a valid choice !");
 			}
 			
+			FeaturesHelper.pause();
+			FeaturesHelper.cls();
 		}while(choix != 0);
 		scan.close();
 	}
