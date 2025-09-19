@@ -1,5 +1,6 @@
 package main.utils;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -87,6 +88,29 @@ public class FeaturesHelper {
 		Optional<Set<Operation>> history = accountService.accountOperationHistory(InputHelper.readString("Code"));
 		if(history.isPresent()) {
 			history.get().forEach(System.out::println);
+		}
+	}
+	
+	public static void cls() {
+        try {
+			if (System.getProperty("os.name").contains("Windows")) {
+				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+	        } else {
+				new ProcessBuilder("clear").inheritIO().start().waitFor();
+	        }
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void pause() {
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
 		}
 	}
 }
