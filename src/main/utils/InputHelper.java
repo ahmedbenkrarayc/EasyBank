@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class InputHelper {
 	
 	public static float readFloat(String inputName) {
+		Scanner scan = new Scanner(System.in);
 		while(true) {
-			Scanner scan = new Scanner(System.in);
 			try {
 				System.out.println("Enter "+inputName+" : ");
 				float value = scan.nextFloat();
@@ -17,15 +17,13 @@ public class InputHelper {
 				System.out.println(e.getMessage());
 			}catch(Exception e) {
 				System.out.println(e.getMessage());
-			}finally {
-				scan.close();
 			}
 		}
 	}
 	
 	public static LocalDate readDate() {
+		Scanner scan = new Scanner(System.in);
 		while(true) {
-			Scanner scan = new Scanner(System.in);
 			try {
 				System.out.println("Enter operation date dd/mm/yyyy : ");
 				String date = scan.nextLine();
@@ -34,16 +32,14 @@ public class InputHelper {
 			}catch(IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 			}catch(Exception e) {
-				System.out.println(e.getMessage());
-			}finally {
-				scan.close();
+				System.out.println("Date isn't valid please respect the requested pattern !");
 			}
 		}
 	}
 	
 	public static String readString(String inputName) {
+		Scanner scan = new Scanner(System.in);
 		while(true) {
-			Scanner scan = new Scanner(System.in);
 			try {
 				System.out.println("Enter "+inputName+" : ");
 				String value = scan.nextLine();
@@ -53,10 +49,20 @@ public class InputHelper {
 				System.out.println(e.getMessage());
 			}catch(Exception e) {
 				System.out.println(e.getMessage());
-			}finally {
-				scan.close();
 			}
 		}
 	}
 	
+	public static String readType() {
+		Scanner scan = new Scanner(System.in);
+		while(true) {
+			System.out.println("Enter Account Type : ");
+			String value = scan.nextLine();
+			if(value.trim().equalsIgnoreCase("courant") || value.trim().equalsIgnoreCase("epargne")) {					
+				return value;
+			}else {
+				System.out.println("Account Type Must Either be 'courant' or 'epargne' !");
+			}
+		}
+	}
 }

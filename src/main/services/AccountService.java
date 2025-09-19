@@ -25,14 +25,14 @@ public class AccountService {
 		try {
 			String code = AccountNumberGenerator.generate(Globals.comptes);
 
-			if(accountType.trim().equals("Courant")) {
+			if(accountType.trim().equalsIgnoreCase("Courant")) {
 				compte = new CompteCourant(code, solde, new HashSet<>(), tauxordecouvert);			
 			}else {
 				compte = new CompteEpargne(code, solde, new HashSet<>(), tauxordecouvert);
 			}
-			
 			return accountRepo.create(compte);
 		}catch(Exception e) {
+			System.out.println(e.getMessage());
 			return false;
 		}		
 		

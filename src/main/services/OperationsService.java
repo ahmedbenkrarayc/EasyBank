@@ -1,6 +1,7 @@
 package main.services;
 
 import java.time.LocalDate;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import main.entities.Compte;
@@ -27,30 +28,36 @@ public class OperationsService {
 	public Boolean retrait(String code, float montant, LocalDate date, String source) {
 		return accountRepo.findAccountByCode(code)
 				.map(compte -> {
-					compte.retirer(montant);
-					compte.getOperations().add(new Versement(date, montant, source));
-					return true;
+					if(compte.retirer(montant)) {						
+						compte.getOperations().add(new Versement(date, montant, source));
+						return true;
+					}
+					return false;
 				})
 				.orElse(false);
 	}
 	
-	public Boolean virement(String senderCode, String receiverCode, float montant) {
+	public Boolean virement(String senderCode, String receiverCode, float montant) throws Exception{
 			Optional<Compte> sender = accountRepo.findAccountByCode(senderCode);
 			Optional<Compte> receiver = accountRepo.findAccountByCode(receiverCode);
+
+			if(!sender.isPresent()) {
+				throw new NoSuchElementException("no sender exists with this code !");
+			}
 			
-			if(!sender.isPresent() || !receiver.isPresent()) {
-				return false;
+			if(!receiver.isPresent()) {
+				throw new NoSuchElementException("no receiver exists with this code !");
 			}
 			
 			if(this.retrait(senderCode, montant, LocalDate.now(), "Transfer to "+receiverCode)) {
 				if(!this.makeVersement(receiverCode, montant, LocalDate.now(), "Transfer from "+senderCode)){
 					sender.get().setSolde(sender.get().getSolde() + montant);
-					return false;
+					throw new Exception("No enough balance !");
 				}
 				
 				return true;
 			}
 			
-			return false;
+			throw new Exception("Something went wrong !");
 	}
 }
